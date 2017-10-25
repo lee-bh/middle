@@ -1,0 +1,338 @@
+<!doctype html>
+<head>
+  <meta charset = "utf-8">
+</head>
+
+<body>
+
+<div class="con">
+        <section id="main"class="scrollTo">
+            <div id= "main2">
+            <img src="icedtea.jpg" style="width:90%; height: auto">
+            </div>
+  </section>
+  <section id="recipe1"class="scrollTo">
+      <div id="container">
+    <video id= "video1" style="width: 90%; height: auto; 
+};" autoplay loop muted>
+        <source src="icedtea1.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+  <section id="recipe2"class="scrollTo">
+            <div id="container">
+    <video id= "video2" style="width: 90%; height: auto;;" autoplay loop muted preload="auto" >
+        <source src="icedtea_2.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+  <section id="recipe3"class="scrollTo">
+            <div id="container">
+    <video  id= "video3" style="width: 90%; height: auto;" autoplay loop  muted preload="auto" >
+        <source src="icedtea_3.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+  <section id="recipe4"class="scrollTo">
+            <div id="container">
+    <video  id= "video4" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_4.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+    <section id="recipe5"class="scrollTo">
+            <div id="container">
+    <video  id= "video5" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_5.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+    <section id="recipe6"class="scrollTo">
+            <div id="container">
+    <video id= "video6" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_6.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+    <section id="recipe7"class="scrollTo">
+            <div id="container">
+    <video id= "video7" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_7.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+    <section id="recipe8"class="scrollTo">
+            <div id="container">
+    <video id= "video8" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_8.mp4" type="video/mp4">
+    </video>
+   
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+</div>
+<script type="text/javascript">
+    $(function() {
+    
+    // IE detect
+    function iedetect(v) {
+
+        var r = RegExp('msie' + (!isNaN(v) ? ('\\s' + v) : ''), 'i');
+        return r.test(navigator.userAgent);
+            
+    }
+
+    // For mobile screens, just show an image called 'poster.jpg'. Mobile
+    // screens don't support autoplaying videos, or for IE.
+    if(screen.width < 800 || iedetect(8) || iedetect(7) || 'ontouchstart' in window) {
+    
+        (adjSize = function() { // Create function called adjSize
+            
+            $width = $(window).width(); // Width of the screen
+            $height = $(window).height(); // Height of the screen
+            
+            // Resize image accordingly
+            $('#container').css({
+                'background-image' : 'url(poster.jpg)', 
+                'background-size' : 'cover', 
+                'width' : $width+'px', 
+                'height' : $height+'px'
+            });
+            
+            // Hide video
+            $('video').hide();
+            
+        })(); // Run instantly
+        
+        // Run on resize too
+        $(window).resize(adjSize);
+    }
+    else {
+
+        // Wait until the video meta data has loaded
+        $('#container video').on('loadedmetadata', function() {
+            
+            var $width, $height, // Width and height of screen
+                $vidwidth = this.videoWidth, // Width of video (actual width)
+                $vidheight = this.videoHeight, // Height of video (actual height)
+                $aspectRatio = $vidwidth / $vidheight; // The ratio the video's height and width are in
+                        
+            (adjSize = function() { // Create function called adjSize
+                            
+                $width = $(window).width(); // Width of the screen
+                $height = $(window).height(); // Height of the screen
+                            
+                $boxRatio = $width / $height; // The ratio the screen is in
+                            
+                $adjRatio = $aspectRatio / $boxRatio; // The ratio of the video divided by the screen size
+                            
+                // Set the container to be the width and height of the screen
+                $('#container').css({'width' : $width+'px', 'height' : $height+'px'}); 
+                            
+                if($boxRatio < $aspectRatio) { // If the screen ratio is less than the aspect ratio..
+                    // Set the width of the video to the screen size multiplied by $adjRatio
+                    $vid = $('#container video').css({'width' : $width*$adjRatio+'px'}); 
+                } else {
+                    // Else just set the video to the width of the screen/container
+                    $vid = $('#container video').css({'width' : $width+'px'});
+                }
+                                 
+            })(); // Run function immediately
+                        
+            // Run function also on window resize.
+            $(window).resize(adjSize);
+                        
+        });
+    }
+    
+});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+
+$('#promovid').click( function(){
+
+$('#video').get(0).play();       // get(0) gets the original DOM element
+
+$('#promovid').unbind('click');  // remove click listener
+
+});
+
+</script>
+<script>
+  var scrolling = false;
+var currentPos = 0;
+    function scrollUp(){
+        if(!scrolling && currentPos > 0 ){
+            scrolling=true;
+            currentPos --;
+            var scrollToElement = $('.scrollTo')[currentPos];
+            $('html, body').animate({
+                scrollTop: $(scrollToElement).offset().top
+            }, 500, function(){
+                scrolling = false;
+            });      
+        }
+    }   
+    function scrollDown(){   
+        if(!scrolling && currentPos < $('.scrollTo').length-1  ){
+            scrolling=true;
+            currentPos ++;
+            var scrollToElement = $('.scrollTo')[currentPos];
+            $('html, body').animate({
+                scrollTop: $(scrollToElement).offset().top
+            }, 500,function(){
+                scrolling = false;
+            }); 
+        }
+    }    
+    $(document).ready(function() {
+        // Get the current position on load
+        for( var i = 0; i < $('.scrollTo').length; i++){
+            var elm = $('.scrollTo')[i];
+            if( $(document).scrollTop() >= $(elm).offset().top ){
+                currentPos = i;
+            }
+        }
+        $(document).bind('DOMMouseScroll', function(e){
+            if(e.originalEvent.detail > 0) {
+                scrollDown();
+            }else {
+                scrollUp();   
+            }
+            return false;
+        });
+        $(document).bind('mousewheel', function(e){
+            if(e.originalEvent.wheelDelta < 0) {
+                scrollDown();
+            }else {
+                scrollUp();     
+            }
+            return false;
+        });
+    });
+</script>
+<script>
+function isInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  var html = document.documentElement;
+ return (
+  rect.top >= 0 &&
+  rect.left >= 0 &&
+  rect.bottom <= (window.innerHeight || html.clientHeight) &&
+  rect.right <= (window.innerWidth || html.clientWidth)
+ );
+}
+</script>
+
+<script type="text/javascript">
+function scaleVideo() {
+    var vid = document.getElementsByTagName('video')[0];
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
+    if (w/16 >= h/9) {
+        vid.setAttribute('width', w);
+        vid.setAttribute('height', 'auto');
+    } else {
+        vid.setAttribute('width', 'auto');
+        vid.setAttribute('height', h);
+    }
+</script>
+
+</body>
+<style>
+html, body { margin: 0; padding: 0; width: 100%; height: 100%;}
+header {
+ position: fixed;
+ top: 0;
+ width: 100%;
+ height: 80px;
+ background: #fff;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+nav {
+ width: 960px;
+ height: 80px;
+ margin: 0 auto;
+}
+nav ul {
+ margin: 20px 0 0;
+}
+nav ul li {
+ display: inline-block;
+ margin: 0 30px 0 0;
+}
+a { color: #4D4D4D;  font-family: sans-serif; text-transform: uppercase; text-decoration: none; line-height: 42px; }
+.active { color: #2dbccb; }
+.con { width: 100%; height: 100%; }
+.con section { width: 100%; height: 100%; }
+#main {  }
+#recipe1 { } 
+#recipe2 { }
+#recipe3 { }
+#recipe4 { }
+#recipe5 { }
+#recipe6 { }
+#recipe7 { }
+#recipe8 { }
+#container {
+    position: relative;
+    overflow: hidden;
+    margin:0 auto;
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one 🙂       */
+  text-align: center;
+  display: flex;
+  align-items: center;
+
+}
+
+video {
+    position:absolute;
+    left:50%;
+    top:50%;
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+}
+
+#main2 img {   
+  max-height: 90%;
+  max-width: 90%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;  
+}  
+</style>
