@@ -1,3 +1,149 @@
+<!doctype html>
+<head>
+  <meta charset = "utf-8">
+  <script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+  <script src='http://tmk1.co.kr/js/rolVideo.min.js'></script>
+</head>
+
+<body>
+
+<div class="con">
+        <section id="main"class="scrollTo">
+            <div id= "main2">
+            <img src="icedtea.jpg" style="width:90%; height: auto">
+            </div>
+  </section>
+  <section id="recipe1"class="scrollTo">
+      <div id="container">
+    <video id= "video1" style="width: 90%; height: auto; 
+};" autoplay loop muted>
+        <source src="icedtea1.mp4" type="video/mp4">
+    </video>
+    <script>
+   $('#video1').rolVideo(1);
+    </script>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+  <section id="recipe2"class="scrollTo">
+            <div id="container">
+    <video id= "video2" style="width: 90%; height: auto;;" autoplay loop muted preload="auto" >
+        <source src="icedtea_2.mp4" type="video/mp4">
+    </video>
+    <script>
+   $('#video2').rolVideo(2);
+    </script>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+  <section id="recipe3"class="scrollTo">
+            <div id="container">
+    <video  id= "video3" style="width: 90%; height: auto;" autoplay loop  muted preload="auto" >
+        <source src="icedtea_3.mp4" type="video/mp4">
+    </video>
+        <script>
+   $('#video3').rolVideo(3);
+    </script>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+  <section id="recipe4"class="scrollTo">
+            <div id="container">
+    <video  id= "video4" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_4.mp4" type="video/mp4">
+    </video>
+        <script>
+   $('#video4').rolVideo(4);
+    </script>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+    <section id="recipe5"class="scrollTo">
+            <div id="container">
+    <video  id= "video5" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_5.mp4" type="video/mp4">
+    </video>
+        <script>
+   $('#video5').rolVideo(5);
+    </script>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+    <section id="recipe6"class="scrollTo">
+            <div id="container">
+    <video id= "video6" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_6.mp4" type="video/mp4">
+    </video>
+        <script>
+   $('#video6').rolVideo(6);
+    </script>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+    <section id="recipe7"class="scrollTo">
+            <div id="container">
+    <video id= "video7" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_7.mp4" type="video/mp4">
+    </video>
+        <script>
+   $('#video7').rolVideo(7);
+    </script>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+    <section id="recipe8"class="scrollTo">
+            <div id="container">
+    <video id= "video8" style="width: 90%; height: auto;" autoplay loop muted preload="auto" >
+        <source src="icedtea_8.mp4" type="video/mp4">
+    </video>
+       <script>
+   $('#video8').rolVideo(8);
+    </script>
+    <div class="content">
+        
+    </div>
+</div>
+  </section>
+</div>
+<script type="text/javascript">
+    $(function() {
+    
+    // IE detect
+    function iedetect(v) {
+
+        var r = RegExp('msie' + (!isNaN(v) ? ('\\s' + v) : ''), 'i');
+        return r.test(navigator.userAgent);
+            
+    }
+
+    // For mobile screens, just show an image called 'poster.jpg'. Mobile
+    // screens don't support autoplaying videos, or for IE.
+    if(screen.width < 800 || iedetect(8) || iedetect(7) || 'ontouchstart' in window) {
+    
+        (adjSize = function() { // Create function called adjSize
+            
+            $width = $(window).width(); // Width of the screen
+            $height = $(window).height(); // Height of the screen
+            
+            // Resize image accordingly
+            $('#container').css({
+                'background-image' : 'url(poster.jpg)', 
+                'background-size' : 'cover', 
+                'width' : $width+'px', 
                 'height' : $height+'px'
             });
             
